@@ -1,10 +1,12 @@
-N=int(input())
-n1=0
-n2=1
-n3=1
-x=0
-for i in range(N-2):
-    x=n3
-    n3=n2+n3
-    n2=x
-print(n3)
+N = int(input())
+f = 0
+s = 1
+lst = []
+for i in range(N+1):
+    if i == 0:
+        lst.append(f)
+    elif i == 1:
+        lst.append(s)
+    else:
+        lst.append(lst[i-2]+lst[i-1])
+print(lst[-1])
