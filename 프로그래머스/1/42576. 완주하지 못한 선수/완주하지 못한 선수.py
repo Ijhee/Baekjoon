@@ -1,16 +1,12 @@
-def solution(participant, completion):
-    par_dict = dict()
+import collections
 
-    for p in participant:
-        try:
-            par_dict[p]
-            par_dict[p].append('O')
-        except:
-            par_dict[p] = ['O']
-    
+def solution(participant, completion):
+    answer = ''
+    temp = 0
+    dic = {}
+    for part in participant:
+        dic[hash(part)] = part
+        temp += hash(part)
     for c in completion:
-        par_dict[c].remove('O')
-    
-    for dic in par_dict:
-        if par_dict[dic] == ['O']:
-            return dic
+        temp -= hash(c)
+    return dic[temp]
